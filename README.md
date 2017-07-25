@@ -4,7 +4,9 @@
 
 ## 参考
 -[RxJava](https://github.com/ReactiveX/RxJava)
+
 -[RxAndroid](https://github.com/ReactiveX/RxAndroid)
+
 -[EventBus](https://github.com/greenrobot/EventBus)
 
 ## 简单使用说明
