@@ -9,6 +9,24 @@
 
 -[EventBus](https://github.com/greenrobot/EventBus)
 
+## 关于注册
+
+为了完善eventbus的可调试和来源追溯将回调设计成了`listener`形式. 现有设计每个event消息都需要一对一注册, 通常在实际应用过程中不同界面不同逻辑中处理eventbus消息都不多一般只有一到两个, 我想这个情况应该还是能接受的.
+`注意: 每个event的register与unregister必需成对出现, 重复注册相同event会引发异常抛出, 只注册不解注册容易造成内存泄漏.`
+```java
+  RxEventListener<TestEvent> listener = new RxEventListener<TestEvent>(){
+    @Override
+    public void onPostEvent(TestEvent event) {
+        // todo 事件处理
+    }
+  };
+  MyEventBus.register(TestEvent.class, listener)
+```
+
+```java
+  MyEventBus.unregister(TestEvent.class, listener)
+```
+
 ## 简单使用说明
 
 默认线程模式
